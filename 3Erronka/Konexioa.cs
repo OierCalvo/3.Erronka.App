@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 
-class Konexioa
+public class Konexioa
 {
     static void Main()
     {
