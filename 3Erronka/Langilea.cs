@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 public class Langilea
 {
@@ -8,10 +10,10 @@ public class Langilea
 	private string telefonoa;
 	private string posta_elektronikoa;
 	private string pasahitza;
-	private Rola rola;
+	private string rola;
 
 
-	public Langilea(int id,string izena,string abizena,string telefonoa,string posta_elektronikoa,string pasahitza,Rola rola)
+	public Langilea(int id,string izena,string abizena,string telefonoa,string posta_elektronikoa,string pasahitza,string rola)
 	{
 		this.id = id;
 		this.izena = izena;
@@ -20,6 +22,11 @@ public class Langilea
 		this.posta_elektronikoa = posta_elektronikoa;
 		this.pasahitza = pasahitza;
 		this.rola = rola;
+	}
+
+	public Langilea()
+	{
+
 	}
 
 	public int getId()
@@ -52,9 +59,50 @@ public class Langilea
 		return pasahitza;
 	}
 
-	public Rola getRola()
+	public string getRola()
 	{
 		return rola;
 	}
+
+    public List<Langilea> GetLangileak()
+    {
+        List<Langilea> langileZerrenda = new List<Langilea>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+			string sql = "SELECT * FROM langileak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+
+                Langilea l = new Langilea(
+                    rs.GetInt32("id"),
+                    rs.GetString("izena"),
+                    rs.GetString("abizena"),
+					rs.GetString("telefonoa"),
+                    rs.GetString("posta_eletronikoa"),
+                    rs.GetString("pasahitza"),
+                    rs.GetString("rola")
+                );
+
+                langileZerrenda.Add(l);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return langileZerrenda;
+    }
 
 }

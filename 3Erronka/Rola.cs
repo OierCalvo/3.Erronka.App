@@ -12,6 +12,7 @@ public class Rola
         this.mota = mota;
     }
 
+
     public int getId()
     {
         return id; 
@@ -20,5 +21,10 @@ public class Rola
     public string getMota()
     {
         return mota;
+    }
+
+    public override string ToString()
+    {
+        return id.ToString();
     }
 }
