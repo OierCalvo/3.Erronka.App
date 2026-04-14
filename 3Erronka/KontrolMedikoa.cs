@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 public class KontrolMedikoa
 {
@@ -62,6 +63,50 @@ public class KontrolMedikoa
     public DateTime getSendatzekoEpea()
     {
         return sendatzeko_epea;
+    }
+
+    public List<KontrolMedikoa> GetKontrolMedikoak()
+    {
+        List<KontrolMedikoa> kontrolMedikoZerrenda = new List<KontrolMedikoa>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT * FROM kontrol_medikoak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                Langilea l = new Langilea(rs.GetInt32("id_langilea"));
+                Animalia an = new Animalia(rs.GetInt32("id_animalia"));
+
+                KontrolMedikoa he = new KontrolMedikoa(
+                    rs.GetInt32("id"),
+                    an,
+                    l,
+                    rs.GetDateTime("data"),
+                    rs.GetString("diagnostikoa"),
+                    rs.GetString("tratamendua"),
+                    rs.GetString("oharra"),
+                    rs.GetDateTime("sendatzeko_epea")
+                );
+
+                kontrolMedikoZerrenda.Add(he);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return kontrolMedikoZerrenda;
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Animalia
@@ -66,5 +67,47 @@ public class Animalia
     public override string ToString()
     {
         return id.ToString();
+    }
+
+    public List<Animalia> GetAnimaliak()
+    {
+        List<Animalia> animaliZerrenda = new List<Animalia>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT * FROM animaliak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                Habitat h = new Habitat(rs.GetInt32("id_habitata"));
+
+                Animalia a = new Animalia(
+                    rs.GetInt32("id"),
+                    h,
+                    rs.GetString("izena"),
+                    rs.GetString("espeziea"),
+                    rs.GetString("sexua"),
+                    rs.GetDateTime("jaiotza_data"),
+                    rs.GetString("deskribapena")
+                );
+
+                animaliZerrenda.Add(a);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return animaliZerrenda;
     }
 }
