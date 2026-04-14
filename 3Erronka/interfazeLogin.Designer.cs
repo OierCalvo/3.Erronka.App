@@ -1,6 +1,6 @@
 ﻿namespace _3Erronka
 {
-    partial class Form1
+    partial class interfazeLogin
     {
         /// <summary>
         ///  Required designer variable.

@@ -9,7 +9,7 @@ public class Kontrola
 
         foreach (Langilea ln in langileZerrenda)
         {
-            if (ln.getPostaElektronikoa() == Form1.textBox1.Text && ln.getPasahitza() == Form1.textBox2.Text)
+            if (ln.getPostaElektronikoa() == interfazeLogin.textBox1.Text && ln.getPasahitza() == interfazeLogin.textBox2.Text)
             {
                 return ln;
             }

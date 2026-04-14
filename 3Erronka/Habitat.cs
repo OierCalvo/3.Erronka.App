@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 public class Habitat
 {
@@ -18,6 +19,11 @@ public class Habitat
         this.temperatura = temperatura;
         this.azalera = azalera;
         this.deskribapena = deskribapena;
+    }
+
+    public Habitat(int id)
+    {
+        this.id = id; 
     }
 
     public int getId()
@@ -49,6 +55,46 @@ public class Habitat
     {
         return deskribapena;
     }
-    
-   
+
+    public List<Habitat> GetHabitatak()
+    {
+        List<Habitat> habitatZerrenda = new List<Habitat>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT * FROM habitatak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+
+                Habitat h = new Habitat(
+                    rs.GetInt32("id"),
+                    rs.GetString("izena"),
+                    rs.GetString("mota"),
+                    rs.GetInt32("temperatura"),
+                    rs.GetDouble("azalera"),
+                    rs.GetString("deskribapena")
+                );
+
+                habitatZerrenda.Add(h);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return habitatZerrenda;
+    }
+
+
 }

@@ -24,9 +24,9 @@ public class Langilea
 		this.rola = rola;
 	}
 
-	public Langilea()
+	public Langilea(int id)
 	{
-
+		this.id = id;
 	}
 
 	public int getId()

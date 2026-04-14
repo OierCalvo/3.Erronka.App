@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 public class Ekitaldia
 {
@@ -17,6 +18,11 @@ public class Ekitaldia
 		this.deskribapena = deskribapena;
 		this.langilea = langilea;
 	}
+
+    public Ekitaldia(int id) 
+    {
+        this.id = id;
+    }
 
 	public int getId()
 	{
@@ -42,4 +48,44 @@ public class Ekitaldia
 	{
 		return langilea;
 	}
+
+    public List<Ekitaldia> GetEkitaldiak()
+    {
+        List<Ekitaldia> ekitaldiZerrenda = new List<Ekitaldia>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT * FROM ekitaldiak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+                Langilea l = new Langilea(rs.GetInt32("id_langilea"));
+
+                Ekitaldia b = new Ekitaldia(
+                    rs.GetInt32("id"),
+                    rs.GetString("ekitaldi_izena"),
+                    rs.GetDateTime("data"),
+                    rs.GetString("deskribapena"),
+                    l
+                );
+
+                ekitaldiZerrenda.Add(b);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return ekitaldiZerrenda;
+    }
 }

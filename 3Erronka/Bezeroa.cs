@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 public class Bezeroa
 {
@@ -20,6 +21,11 @@ public class Bezeroa
         this.posta_elektronikoa = posta_elektronikoa;
         this.pasahitza = pasahitza;
         this.nan = nan;
+    }
+
+    public Bezeroa(int id)
+    {
+        this.id = id; 
     }
 
     public int getId() 
@@ -55,5 +61,46 @@ public class Bezeroa
     public string getNan()
     {
         return nan;
+    }
+
+    public List<Bezeroa> GetBezeroak()
+    {
+        List<Bezeroa> bezeroZerrenda = new List<Bezeroa>();
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT * FROM bezeroak";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            con.Open();
+
+            MySqlDataReader rs = cmd.ExecuteReader();
+
+            while (rs.Read())
+            {
+
+                Bezeroa b = new Bezeroa(
+                    rs.GetInt32("id"),
+                    rs.GetString("izena"),
+                    rs.GetString("abizena"),
+                    rs.GetString("telefonoa"),
+                    rs.GetString("posta_eletronikoa"),
+                    rs.GetString("pasahitza"),
+                    rs.GetString("nan")
+                );
+
+                bezeroZerrenda.Add(b);
+            }
+
+            rs.Close();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return bezeroZerrenda;
     }
 }

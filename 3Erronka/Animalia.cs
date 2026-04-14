@@ -23,6 +23,11 @@ public class Animalia
         this.deskribapena = deskribapena;
     }
 
+    public Animalia(int id)
+    {
+        this.id = id; 
+    }
+
     public int getId()
     {
         return id;
