@@ -43,7 +43,7 @@ public class Animalia
         return habitat;
     }
 
-    public string getZena()
+    public string getIzena()
     {
         return izena;
     }

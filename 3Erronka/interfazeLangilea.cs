@@ -22,8 +22,8 @@ namespace _3Erronka
 
         private void button2_Click(object sender, EventArgs e)
         {
-            bezeroaGehitu bg = new bezeroaGehitu();
-            bg.Show();
+            langileaGehitu lg = new langileaGehitu();
+            lg.Show();
             this.Close();
         }
 

@@ -56,6 +56,11 @@ public class Habitat
         return deskribapena;
     }
 
+    public override string ToString()
+    {
+        return id.ToString();
+    }
+
     public List<Habitat> GetHabitatak()
     {
         List<Habitat> habitatZerrenda = new List<Habitat>();

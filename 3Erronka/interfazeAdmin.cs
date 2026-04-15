@@ -17,13 +17,16 @@ namespace _3Erronka
 
         private void button4_Click(object sender, EventArgs e)
         {
+            interfazeAnimalia ia = new interfazeAnimalia();
+            ia.Show();
+            this.Close();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
             interfazeBezeroak ib = new interfazeBezeroak();
             ib.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void button7_Click(object sender, EventArgs e)

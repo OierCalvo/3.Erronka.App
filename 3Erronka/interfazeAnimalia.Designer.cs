@@ -44,6 +44,7 @@
             button4.TabIndex = 16;
             button4.Text = "Aldatu";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -53,6 +54,7 @@
             button3.TabIndex = 15;
             button3.Text = "Animali bat ezabatu";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -62,6 +64,7 @@
             button2.TabIndex = 14;
             button2.Text = "Animali bat gehitu";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -71,6 +74,7 @@
             button1.TabIndex = 13;
             button1.Text = "Atzera";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
@@ -93,6 +97,7 @@
             Controls.Add(dataGridView1);
             Name = "interfazeAnimalia";
             Text = "interfazeAnimalia";
+            Load += interfazeAnimaliak_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

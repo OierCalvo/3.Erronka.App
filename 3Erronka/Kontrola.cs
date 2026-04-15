@@ -211,4 +211,100 @@ public class Kontrola
         }
     }
 
+
+    public static void gehituAnimalia(TextBox tx1, TextBox tx2, TextBox tx3, TextBox tx4, TextBox tx5, TextBox tx6)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO animaliak (id_habitata, izena, espeziea, sexua, jaiotza_data, deskribapena) VALUES (@id_habitata, @izena, @espeziea, @sexua, @jaiotza_data, @deskribapena)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@id_habitata", tx1.Text);
+            cmd.Parameters.AddWithValue("@izena", tx2.Text);
+            cmd.Parameters.AddWithValue("@espeziea", tx3.Text);
+            cmd.Parameters.AddWithValue("@sexua", tx4.Text);
+            cmd.Parameters.AddWithValue("@jaiotza_data", tx5.Text);
+            cmd.Parameters.AddWithValue("@deskribapena", tx6.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Animalia gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuAnimalia(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM animaliak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuAnimalia(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = $"UPDATE animaliak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void animaliakErakutsi(DataGridView dgv)
+    {
+        Animalia a = new Animalia();
+        var zerrenda = a.GetAnimaliak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_habitata", "Id habitata");
+        dgv.Columns.Add("izena", "Izena");
+        dgv.Columns.Add("espeziea", "Espeziea");
+        dgv.Columns.Add("sexua", "Sexua");
+        dgv.Columns.Add("jaiotza_data", "Jaiotza Data");
+        dgv.Columns.Add("deskribapena", "Deskribapena");
+
+
+
+        foreach (Animalia b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getHabitat(),
+                b.getIzena(),
+                b.getEspeziea(),
+                b.getSexua(),
+                b.getJaiotzaData(),
+                b.getDeskribapena()
+            );
+        }
+    }
 }
