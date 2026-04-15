@@ -26,6 +26,11 @@ public class Habitat
         this.id = id; 
     }
 
+    public Habitat()
+    {
+
+    }
+
     public int getId()
     {
         return id; 

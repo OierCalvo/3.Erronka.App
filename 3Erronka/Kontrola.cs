@@ -307,4 +307,97 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituHabitata(TextBox tx1, TextBox tx2, TextBox tx3, TextBox tx4, TextBox tx5)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO habitatak (izena, mota, temperatura, azalera, deskribapena) VALUES (@izena, @mota, @temperatura, @azalera, @deskribapena)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@izena", tx1.Text);
+            cmd.Parameters.AddWithValue("@mota", tx2.Text);
+            cmd.Parameters.AddWithValue("@temperatura", tx3.Text);
+            cmd.Parameters.AddWithValue("@azalera", tx4.Text);
+            cmd.Parameters.AddWithValue("@deskribapena", tx5.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Habitata gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuHabitata(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM habitatak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuHabitata(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = $"UPDATE habitatak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void habitatakErakutsi(DataGridView dgv)
+    {
+        Habitat a = new Habitat();
+        var zerrenda = a.GetHabitatak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("izena", "Izena");
+        dgv.Columns.Add("mota", "Mota");
+        dgv.Columns.Add("temperatura", "Temperatura");
+        dgv.Columns.Add("azalera", "Azalera");
+        dgv.Columns.Add("deskribapena", "Deskribapena");
+
+
+
+        foreach (Habitat b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getIzena(),
+                b.getMota(),
+                b.getTemperatura(),
+                b.getAzalera(),
+                b.getDeskribapena()
+            );
+        }
+    }
 }

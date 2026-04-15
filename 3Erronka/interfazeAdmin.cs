@@ -35,5 +35,12 @@ namespace _3Erronka
             il.Show();
             this.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            interfazeHabitat ih = new interfazeHabitat();
+            ih.Show();
+            this.Close();
+        }
     }
 }
