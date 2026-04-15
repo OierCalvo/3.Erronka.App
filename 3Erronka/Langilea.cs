@@ -91,7 +91,7 @@ public class Langilea
                     rs.GetString("izena"),
                     rs.GetString("abizena"),
 					rs.GetString("telefonoa"),
-                    rs.GetString("posta_eletronikoa"),
+                    rs.GetString("posta_elektronikoa"),
                     rs.GetString("pasahitza"),
                     rs.GetString("rola")
                 );

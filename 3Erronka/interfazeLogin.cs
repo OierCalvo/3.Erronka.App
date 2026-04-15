@@ -10,8 +10,11 @@ namespace _3Erronka
         private void button1_Click(object sender, EventArgs e)
         {
             Langilea l = Kontrola.login(textBox1,textBox2);
-
-            if (l.getRola().Equals("admina"))
+            if (l == null)
+            {
+                MessageBox.Show("Erabiltzailea edo pasahitza ez dira zuzenak");
+                return;
+            }else if (l.getRola().Equals("admina"))
             {
                 MessageBox.Show("Admina zara", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 interfazeAdmin ia = new interfazeAdmin();

@@ -8,25 +8,19 @@ using System.Windows.Forms;
 
 namespace _3Erronka
 {
-    public partial class interfazeAdmin : Form
+    public partial class langileaGehitu : Form
     {
-        public interfazeAdmin()
+        public langileaGehitu()
         {
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            Kontrola.gehituLangilea(textBox1, textBox2, textBox3, textBox4, textBox5, textBox6);
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            interfazeBezeroak ib = new interfazeBezeroak();
-            ib.Show();
-            this.Hide();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             interfazeLangilea il = new interfazeLangilea();
             il.Show();

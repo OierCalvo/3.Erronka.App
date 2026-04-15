@@ -101,6 +101,7 @@
             button7.TabIndex = 6;
             button7.Text = "Langileak";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // interfazeAdmin
             // 

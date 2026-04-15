@@ -4,13 +4,22 @@
     <Compile Update="bezeroaGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="interfazeAnimalia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="interfazeBezeroak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="interfazeLangilea.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="interfazeLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="interfazeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="langileaGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
