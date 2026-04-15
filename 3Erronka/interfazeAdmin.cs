@@ -42,5 +42,12 @@ namespace _3Erronka
             ih.Show();
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            interfazeEkitaldia ie = new interfazeEkitaldia();
+            ie.Show();
+            this.Close(); 
+        }
     }
 }

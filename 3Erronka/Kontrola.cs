@@ -400,4 +400,94 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituEkitaldia(TextBox tx1, TextBox tx2, TextBox tx3, TextBox tx4)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO ekitaldiak (ekitaldi_izena, data, deskribapena, id_langilea) VALUES (@izena, @data, @deskribapena, @id)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@izena", tx1.Text);
+            cmd.Parameters.AddWithValue("@data", tx2.Text);
+            cmd.Parameters.AddWithValue("@deskribapena", tx3.Text);
+            cmd.Parameters.AddWithValue("@id", tx4.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Habitata gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuEkitaldia(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM ekitaldiak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuEkitaldia(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = $"UPDATE ekitaldiak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void ekitaldiakErakutsi(DataGridView dgv)
+    {
+        Ekitaldia a = new Ekitaldia();
+        var zerrenda = a.GetEkitaldiak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("ekitaldi_izena", "Izena");
+        dgv.Columns.Add("data", "Data");
+        dgv.Columns.Add("deskribapena", "Deskribapena");
+        dgv.Columns.Add("id_langilea", "Id_langilea");
+
+
+
+        foreach (Ekitaldia b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getEkitaldiIzena(),
+                b.getData(),
+                b.getDeskribapena(),
+                b.getLangilea()
+            );
+        }
+    }
 }

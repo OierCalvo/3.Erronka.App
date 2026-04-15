@@ -24,6 +24,11 @@ public class Ekitaldia
         this.id = id;
     }
 
+    public Ekitaldia()
+    {
+
+    }
+
 	public int getId()
 	{
 		return id; 

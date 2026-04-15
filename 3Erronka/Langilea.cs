@@ -68,6 +68,11 @@ public class Langilea
 	{
 		return rola;
 	}
+    
+	public override string ToString()
+    {
+        return id.ToString();
+    }
 
     public List<Langilea> GetLangileak()
     {
