@@ -45,6 +45,7 @@
             button1.TabIndex = 0;
             button1.Text = "Animaliak";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button4_Click;
             // 
             // button2
             // 
@@ -72,6 +73,7 @@
             button4.TabIndex = 3;
             button4.Text = "Bezeroak";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click_1;
             // 
             // button5
             // 

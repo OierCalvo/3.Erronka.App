@@ -29,6 +29,10 @@ public class Animalia
         this.id = id; 
     }
 
+    public Animalia()
+    {
+    }
+
     public int getId()
     {
         return id;

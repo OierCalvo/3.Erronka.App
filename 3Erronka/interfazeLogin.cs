@@ -9,11 +9,15 @@ namespace _3Erronka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Langilea l = Kontrola.login();
+            Langilea l = Kontrola.login(textBox1,textBox2);
 
             if (l.getRola().Equals("admina"))
             {
                 MessageBox.Show("Admina zara", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                interfazeAdmin ia = new interfazeAdmin();
+                
+                ia.Show();
+                this.Hide();
             }
             else if(l.getRola().Equals("kordinatzailea"))
             {

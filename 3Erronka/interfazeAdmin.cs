@@ -15,6 +15,15 @@ namespace _3Erronka
             InitializeComponent();
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            interfazeBezeroak ib = new interfazeBezeroak();
+            ib.Show();
+            this.Hide();
+        }
     }
 }

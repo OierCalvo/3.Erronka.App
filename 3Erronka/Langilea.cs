@@ -29,6 +29,11 @@ public class Langilea
 		this.id = id;
 	}
 
+	public Langilea()
+	{
+
+	}
+
 	public int getId()
 	{
 		return id; 

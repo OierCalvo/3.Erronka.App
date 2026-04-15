@@ -28,12 +28,17 @@ public class Bezeroa
         this.id = id; 
     }
 
+    public Bezeroa()
+    {
+
+    }
+
     public int getId() 
     { 
         return id; 
     }
 
-    public string getZena()
+    public string getIzena()
     {
         return izena;
     }
@@ -85,7 +90,7 @@ public class Bezeroa
                     rs.GetString("izena"),
                     rs.GetString("abizena"),
                     rs.GetString("telefonoa"),
-                    rs.GetString("posta_eletronikoa"),
+                    rs.GetString("posta_elektronikoa"),
                     rs.GetString("pasahitza"),
                     rs.GetString("nan")
                 );
@@ -103,4 +108,6 @@ public class Bezeroa
 
         return bezeroZerrenda;
     }
+
+    
 }
