@@ -17,6 +17,11 @@ public class Narrastia : Animalia
         this.toxikoa = toxikoa;
     }
 
+    public Narrastia()
+    {
+
+    }
+
     public int getIdNarrasti()
     {
         return id_narrasti;

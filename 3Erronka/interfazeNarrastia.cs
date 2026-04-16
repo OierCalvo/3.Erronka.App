@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 namespace _3Erronka
 {
-    public partial class interfazeAnimalia : Form
+    public partial class interfazeNarrastia : Form
     {
-        public interfazeAnimalia()
+        public interfazeNarrastia()
         {
             InitializeComponent();
         }
 
         private void interfazeAnimaliak_Load(object sender, EventArgs e)
         {
-            Kontrola.animaliakErakutsi(dataGridView1);
+            Kontrola.narrastiakErakutsi(dataGridView1);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -26,11 +26,11 @@ namespace _3Erronka
             {
                 int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
 
-                Kontrola.ezabatuAnimalia(id);
+                Kontrola.ezabatuNarrastia(id);
 
-                MessageBox.Show("Animalia ezabatuta!");
+                MessageBox.Show("Narrastia ezabatuta!");
 
-                Kontrola.animaliakErakutsi(dataGridView1);
+                Kontrola.narrastiakErakutsi(dataGridView1);
             }
             else
             {
@@ -40,6 +40,7 @@ namespace _3Erronka
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             int rowIndex = dataGridView1.CurrentCell.RowIndex;
             int colIndex = dataGridView1.CurrentCell.ColumnIndex;
 
@@ -48,44 +49,23 @@ namespace _3Erronka
             string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
 
 
-            Kontrola.editatuAnimalia(id, zutabea, balioBerria);
-            Kontrola.animaliakErakutsi(dataGridView1);
+            Kontrola.editatuNarrastiak(id, zutabea, balioBerria);
+            Kontrola.narrastiakErakutsi(dataGridView1);
 
             MessageBox.Show("Datua zuzen editatu da");
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            animaliaGehitu ag = new animaliaGehitu();
-            ag.Show();
-            this.Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            interfazeAdmin ia = new interfazeAdmin();
+            interfazeAnimalia ia = new interfazeAnimalia();
             ia.Show();
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            interfazeUgaztuna iu = new interfazeUgaztuna();
-            iu.Show();
-            this.Close();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            interfazeNarrastia i = new interfazeNarrastia();
-            i.Show();
-            this.Close();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            interfazeHegaztiak ih = new interfazeHegaztiak();
-            ih.Show();
+            narrastiaGehitu ng = new narrastiaGehitu();
+            ng.Show();
             this.Close();
         }
     }

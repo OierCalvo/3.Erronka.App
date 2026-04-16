@@ -25,6 +25,9 @@
     <Compile Update="interfazeHabitat.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="interfazeHegaztiak.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="interfazeLangilea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -34,10 +37,16 @@
     <Compile Update="interfazeAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="interfazeNarrastia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="interfazeUgaztuna.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="langileaGehitu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="narrastiaGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ugaztunaGehitu.cs">

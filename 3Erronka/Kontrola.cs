@@ -577,4 +577,92 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituNarrastiak(TextBox tx1, TextBox tx2, TextBox tx3)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO narrastiak (id_animalia, toxikoa, arrautz_kop) VALUES (@id, @toxiko, @arrautz)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@id", tx1.Text);
+            cmd.Parameters.AddWithValue("@toxiko", tx2.Text);
+            cmd.Parameters.AddWithValue("@arrautz", tx3.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Narrastia gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuNarrastia(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM narrastiak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuNarrastiak(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+
+        string sql = $"UPDATE narrastiak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void narrastiakErakutsi(DataGridView dgv)
+    {
+        Narrastia a = new Narrastia();
+        var zerrenda = a.GetNarrastiak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_animalia", "Id_animalia");
+        dgv.Columns.Add("toxikoa", "Toxikoa");
+        dgv.Columns.Add("arrautz_kop", "Arrautz kopurua");
+
+
+
+        foreach (Narrastia b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getIdNarrasti(),
+                b.getAnimalia(),
+                b.getToxikoa(),
+                b.getArraultzKopurua()
+            );
+        }
+    }
 }
