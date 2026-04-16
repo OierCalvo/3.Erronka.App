@@ -17,6 +17,11 @@ public class Ugaztuna : Animalia
         this.ugalketa_mota = ugalketa_mota;
     }
 
+    public Ugaztuna()
+    {
+
+    }
+
     public int getIdUgaztun()
     {
         return id_ugaztun;

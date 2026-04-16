@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 namespace _3Erronka
 {
-    public partial class interfazeAnimalia : Form
+    public partial class interfazeUgaztuna : Form
     {
-        public interfazeAnimalia()
+        public interfazeUgaztuna()
         {
             InitializeComponent();
         }
 
         private void interfazeAnimaliak_Load(object sender, EventArgs e)
         {
-            Kontrola.animaliakErakutsi(dataGridView1);
+            Kontrola.ugaztunakErakutsi(dataGridView1);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -26,11 +26,11 @@ namespace _3Erronka
             {
                 int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
 
-                Kontrola.ezabatuAnimalia(id);
+                Kontrola.ezabatuUgaztuna(id);
 
-                MessageBox.Show("Animalia ezabatuta!");
+                MessageBox.Show("Ugaztuna ezabatuta!");
 
-                Kontrola.animaliakErakutsi(dataGridView1);
+                Kontrola.ugaztunakErakutsi(dataGridView1);
             }
             else
             {
@@ -48,30 +48,23 @@ namespace _3Erronka
             string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
 
 
-            Kontrola.editatuAnimalia(id, zutabea, balioBerria);
-            Kontrola.animaliakErakutsi(dataGridView1);
+            Kontrola.editatuUgaztunak(id, zutabea, balioBerria);
+            Kontrola.ugaztunakErakutsi(dataGridView1);
 
             MessageBox.Show("Datua zuzen editatu da");
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            animaliaGehitu ag = new animaliaGehitu();
-            ag.Show();
-            this.Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            interfazeAdmin ia = new interfazeAdmin();
+            interfazeAnimalia ia = new interfazeAnimalia();
             ia.Show();
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            interfazeUgaztuna iu = new interfazeUgaztuna();
-            iu.Show();
+            ugaztunaGehitu ug = new ugaztunaGehitu();
+            ug.Show();
             this.Close();
         }
     }

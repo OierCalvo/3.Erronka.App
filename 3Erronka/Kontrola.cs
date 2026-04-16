@@ -418,7 +418,7 @@ public class Kontrola
             con.Close();
 
             if (filas > 0)
-                MessageBox.Show("Habitata gehitu da");
+                MessageBox.Show("Ekitaldia gehitu da");
             else
                 MessageBox.Show("Ezin izan da gehitu");
         }
@@ -487,6 +487,93 @@ public class Kontrola
                 b.getData(),
                 b.getDeskribapena(),
                 b.getLangilea()
+            );
+        }
+    }
+
+    public static void gehituUgaztunak(TextBox tx1, TextBox tx2, TextBox tx3)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO ugaztunak (id_animalia, ile_mota, ugalketa_mota) VALUES (@id, @ile, @ugalketa)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@id", tx1.Text);
+            cmd.Parameters.AddWithValue("@ile", tx2.Text);
+            cmd.Parameters.AddWithValue("@ugalketa", tx3.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Ugaztuna gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuUgaztuna(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM ugaztunak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuUgaztunak(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = $"UPDATE ugaztunak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void ugaztunakErakutsi(DataGridView dgv)
+    {
+        Ugaztuna a = new Ugaztuna();
+        var zerrenda = a.GetUgaztunak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_animalia", "Id_animalia");
+        dgv.Columns.Add("ile_mota", "Ile mota");
+        dgv.Columns.Add("ugalketa_mota", "Ugalketa mota");
+
+
+
+        foreach (Ugaztuna b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getAnimalia(),
+                b.getIleMota(),
+                b.getUgalketaMota()
             );
         }
     }
