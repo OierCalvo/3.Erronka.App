@@ -753,4 +753,92 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituAnfibioa(TextBox tx1, TextBox tx2, TextBox tx3)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO anfibioak (id_animalia, azal_mota, metamorfosia) VALUES (@id, @azal, @metamorfosi)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@id", tx1.Text);
+            cmd.Parameters.AddWithValue("@azal", tx2.Text);
+            cmd.Parameters.AddWithValue("@metamorfosi", tx3.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Anfibioa gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuAnfibioa(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM anfibioak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuAnfibioa(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+
+        string sql = $"UPDATE anfibioak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void anfibioakErakutsi(DataGridView dgv)
+    {
+        Anfibioa a = new Anfibioa();
+        var zerrenda = a.GetAnfibioak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_animalia", "Id_animalia");
+        dgv.Columns.Add("azal_mota", "Azal mota");
+        dgv.Columns.Add("metamorfosia", "Metamorfosia");
+
+
+
+        foreach (Anfibioa b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getIdAnfibio(),
+                b.getAnimalia(),
+                b.getAzalMota(),
+                b.getMetamorfosia()
+            );
+        }
+    }
 }

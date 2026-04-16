@@ -17,6 +17,11 @@ public class Anfibioa : Animalia
         this.metamorfosia = metamorfosia;
     }
 
+    public Anfibioa()
+    {
+
+    }
+
 
     public int getIdAnfibio()
     {

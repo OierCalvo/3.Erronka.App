@@ -1,6 +1,6 @@
 ﻿namespace _3Erronka
 {
-    partial class interfazeAnfibioa
+    partial class interfazeKontrolMedikoa
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             button4.Location = new Point(942, 129);
             button4.Name = "button4";
             button4.Size = new Size(274, 72);
-            button4.TabIndex = 27;
+            button4.TabIndex = 32;
             button4.Text = "Aldatu";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
@@ -51,7 +51,7 @@
             button3.Location = new Point(942, 285);
             button3.Name = "button3";
             button3.Size = new Size(274, 72);
-            button3.TabIndex = 26;
+            button3.TabIndex = 31;
             button3.Text = "Anfibio bat ezabatu";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
@@ -61,17 +61,16 @@
             button2.Location = new Point(942, 207);
             button2.Name = "button2";
             button2.Size = new Size(274, 72);
-            button2.TabIndex = 25;
+            button2.TabIndex = 30;
             button2.Text = "Anfibio bat gehitu";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // button1
             // 
             button1.Location = new Point(1222, 12);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
-            button1.TabIndex = 24;
+            button1.TabIndex = 29;
             button1.Text = "Atzera";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -83,9 +82,9 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(803, 426);
-            dataGridView1.TabIndex = 23;
+            dataGridView1.TabIndex = 28;
             // 
-            // interfazeAnfibioa
+            // interfazeKontrolMedikoa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -95,8 +94,8 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "interfazeAnfibioa";
-            Text = "interfazeAnfibioa";
+            Name = "interfazeKontrolMedikoa";
+            Text = "interfazeKontrolMedikoa";
             Load += interfazeAnimaliak_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

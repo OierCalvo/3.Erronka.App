@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace _3Erronka
 {
-    public partial class interfazeAnfibioa : Form
+    public partial class interfazeKontrolMedikoa : Form
     {
-        public interfazeAnfibioa()
+        public interfazeKontrolMedikoa()
         {
             InitializeComponent();
         }
@@ -22,25 +22,9 @@ namespace _3Erronka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            interfazeAnimalia ia = new interfazeAnimalia();
+            interfazeAdmin ia = new interfazeAdmin();
             ia.Show();
             this.Close();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            int rowIndex = dataGridView1.CurrentCell.RowIndex;
-            int colIndex = dataGridView1.CurrentCell.ColumnIndex;
-
-            int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["id"].Value);
-            string zutabea = dataGridView1.Columns[colIndex].Name;
-            string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
-
-
-            Kontrola.editatuAnfibioa(id, zutabea, balioBerria);
-            Kontrola.anfibioakErakutsi(dataGridView1);
-
-            MessageBox.Show("Datua zuzen editatu da");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -61,11 +45,20 @@ namespace _3Erronka
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            anfibioaGehitu ag = new anfibioaGehitu();
-            ag.Show();
-            this.Close();
+            int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            int colIndex = dataGridView1.CurrentCell.ColumnIndex;
+
+            int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells["id"].Value);
+            string zutabea = dataGridView1.Columns[colIndex].Name;
+            string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
+
+
+            Kontrola.editatuAnfibioa(id, zutabea, balioBerria);
+            Kontrola.anfibioakErakutsi(dataGridView1);
+
+            MessageBox.Show("Datua zuzen editatu da");
         }
     }
 }
