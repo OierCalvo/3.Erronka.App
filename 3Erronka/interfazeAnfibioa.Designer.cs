@@ -1,6 +1,6 @@
 ﻿namespace _3Erronka
 {
-    partial class interfazeAnimalia
+    partial class interfazeAnfibioa
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,6 @@
             button2 = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -45,7 +41,7 @@
             button4.Location = new Point(942, 129);
             button4.Name = "button4";
             button4.Size = new Size(274, 72);
-            button4.TabIndex = 16;
+            button4.TabIndex = 27;
             button4.Text = "Aldatu";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
@@ -55,27 +51,25 @@
             button3.Location = new Point(942, 285);
             button3.Name = "button3";
             button3.Size = new Size(274, 72);
-            button3.TabIndex = 15;
-            button3.Text = "Animali bat ezabatu";
+            button3.TabIndex = 26;
+            button3.Text = "Hegazti bat ezabatu";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
             // 
             // button2
             // 
             button2.Location = new Point(942, 207);
             button2.Name = "button2";
             button2.Size = new Size(274, 72);
-            button2.TabIndex = 14;
-            button2.Text = "Animali bat gehitu";
+            button2.TabIndex = 25;
+            button2.Text = "Hegazti bat gehitu";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // button1
             // 
             button1.Location = new Point(1222, 12);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
-            button1.TabIndex = 13;
+            button1.TabIndex = 24;
             button1.Text = "Atzera";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -86,65 +80,21 @@
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(803, 370);
-            dataGridView1.TabIndex = 12;
+            dataGridView1.Size = new Size(803, 426);
+            dataGridView1.TabIndex = 23;
             // 
-            // button5
-            // 
-            button5.Location = new Point(189, 412);
-            button5.Name = "button5";
-            button5.Size = new Size(171, 72);
-            button5.TabIndex = 17;
-            button5.Text = "Narrastiak";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(12, 412);
-            button6.Name = "button6";
-            button6.Size = new Size(171, 72);
-            button6.TabIndex = 18;
-            button6.Text = "Ugaztunak";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(366, 412);
-            button7.Name = "button7";
-            button7.Size = new Size(171, 72);
-            button7.TabIndex = 19;
-            button7.Text = "Hegaztiak";
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += button7_Click;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(543, 412);
-            button8.Name = "button8";
-            button8.Size = new Size(171, 72);
-            button8.TabIndex = 20;
-            button8.Text = "Anfibioak";
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
-            // 
-            // interfazeAnimalia
+            // interfazeAnfibioa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1328, 528);
-            Controls.Add(button8);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "interfazeAnimalia";
-            Text = "interfazeAnimalia";
+            Name = "interfazeAnfibioa";
+            Text = "interfazeAnfibioa";
             Load += interfazeAnimaliak_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -157,9 +107,5 @@
         private Button button2;
         private Button button1;
         public DataGridView dataGridView1;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
     }
 }

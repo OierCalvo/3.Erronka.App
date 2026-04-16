@@ -17,6 +17,11 @@ public class Hegaztia : Animalia
         this.hegalduna = hegalduna;
     }
 
+    public Hegaztia()
+    {
+
+    }
+
     public int getIdHegazti()
     {
         return id_hegazti;

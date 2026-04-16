@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace _3Erronka
 {
-    public partial class interfazeHegaztiak : Form
+    public partial class interfazeAnfibioa : Form
     {
-        public interfazeHegaztiak()
+        public interfazeAnfibioa()
         {
             InitializeComponent();
         }
@@ -37,35 +37,10 @@ namespace _3Erronka
             string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
 
 
-            Kontrola.editatuHegaztiak(id, zutabea, balioBerria);
-            Kontrola.hegaztiakErakutsi(dataGridView1);
+            Kontrola.editatuAnfibioa(id, zutabea, balioBerria);
+            Kontrola.anfibioaErakutsi(dataGridView1);
 
             MessageBox.Show("Datua zuzen editatu da");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
-
-                Kontrola.ezabatuHegaztia(id);
-
-                MessageBox.Show("Hegaztia ezabatuta!");
-
-                Kontrola.hegaztiakErakutsi(dataGridView1);
-            }
-            else
-            {
-                MessageBox.Show("Aukeratu lerro bat");
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            hegaztiaGehitu hg = new hegaztiaGehitu();
-            hg.Show();
-            this.Close();
         }
     }
 }

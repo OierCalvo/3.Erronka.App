@@ -665,4 +665,92 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituHegaztiak(TextBox tx1, TextBox tx2, TextBox tx3)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO hegaztiak (id_animaliak, hegal_zabalera, hegalduna) VALUES (@id, @hegal, @hegaldun)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@id", tx1.Text);
+            cmd.Parameters.AddWithValue("@hegal", tx2.Text);
+            cmd.Parameters.AddWithValue("@hegaldun", tx3.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Hegaztia gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuHegaztia(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM hegaztiak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuHegaztiak(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+
+        string sql = $"UPDATE hegaztiak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void hegaztiakErakutsi(DataGridView dgv)
+    {
+        Hegaztia a = new Hegaztia();
+        var zerrenda = a.GetHegaztiak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_animaliak", "Id_animalia");
+        dgv.Columns.Add("hegal_zabalera", "Hegal zabalera");
+        dgv.Columns.Add("hegalduna", "Hegalduna");
+
+
+
+        foreach (Hegaztia b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getIdHegazti(),
+                b.getAnimalia(),
+                b.getHegalZabalera(),
+                b.getHegalduna()
+            );
+        }
+    }
 }

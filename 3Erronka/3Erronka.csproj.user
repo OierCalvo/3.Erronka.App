@@ -13,6 +13,12 @@
     <Compile Update="habitatGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="hegaztiaGehitu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="interfazeAnfibioa.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="interfazeAnimalia.cs">
       <SubType>Form</SubType>
     </Compile>

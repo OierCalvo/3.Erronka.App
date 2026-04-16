@@ -88,5 +88,12 @@ namespace _3Erronka
             ih.Show();
             this.Close();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            interfazeAnfibioa ia = new interfazeAnfibioa();
+            ia.Show();
+            this.Close();
+        }
     }
 }

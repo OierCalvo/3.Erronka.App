@@ -52,8 +52,9 @@
             button3.Name = "button3";
             button3.Size = new Size(274, 72);
             button3.TabIndex = 21;
-            button3.Text = "Narrasti bat ezabatu";
+            button3.Text = "Hegazti bat ezabatu";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -61,8 +62,9 @@
             button2.Name = "button2";
             button2.Size = new Size(274, 72);
             button2.TabIndex = 20;
-            button2.Text = "Narrasti bat gehitu";
+            button2.Text = "Hegazti bat gehitu";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
