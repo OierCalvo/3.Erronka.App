@@ -25,6 +25,11 @@ public class KontrolMedikoa
         this.sendatzeko_epea = sendatzeko_epea;
     }
 
+    public KontrolMedikoa() 
+    { 
+    
+    }
+
     public int getId()
     {
         return id; 

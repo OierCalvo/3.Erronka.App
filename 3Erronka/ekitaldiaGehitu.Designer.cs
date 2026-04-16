@@ -30,11 +30,9 @@
         {
             button2 = new Button();
             button1 = new Button();
-            textBox4 = new TextBox();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
-            label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -52,20 +50,13 @@
             // 
             // button1
             // 
-            button1.Location = new Point(49, 216);
+            button1.Location = new Point(49, 165);
             button1.Name = "button1";
             button1.Size = new Size(330, 29);
             button1.TabIndex = 38;
             button1.Text = "Gehitu";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(225, 164);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(154, 27);
-            textBox4.TabIndex = 36;
             // 
             // textBox3
             // 
@@ -87,15 +78,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(154, 27);
             textBox1.TabIndex = 33;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(49, 167);
-            label4.Name = "label4";
-            label4.Size = new Size(165, 20);
-            label4.TabIndex = 31;
-            label4.Text = "Langile identifikadorea:";
             // 
             // label3
             // 
@@ -131,11 +113,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -149,11 +129,9 @@
 
         private Button button2;
         private Button button1;
-        private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
-        private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;

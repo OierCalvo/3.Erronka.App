@@ -9,7 +9,7 @@ namespace _3Erronka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Langilea l = Kontrola.login(textBox1,textBox2);
+            Langilea l = Kontrola.login();
             if (l == null)
             {
                 MessageBox.Show("Erabiltzailea edo pasahitza ez dira zuzenak");

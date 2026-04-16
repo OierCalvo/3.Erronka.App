@@ -52,7 +52,7 @@
             button3.Name = "button3";
             button3.Size = new Size(274, 72);
             button3.TabIndex = 31;
-            button3.Text = "Anfibio bat ezabatu";
+            button3.Text = "Kontrol mediko bat ezabatu";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
@@ -62,8 +62,9 @@
             button2.Name = "button2";
             button2.Size = new Size(274, 72);
             button2.TabIndex = 30;
-            button2.Text = "Anfibio bat gehitu";
+            button2.Text = "Kontrol mediko bat gehitu";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 

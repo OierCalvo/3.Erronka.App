@@ -47,7 +47,14 @@ namespace _3Erronka
         {
             interfazeEkitaldia ie = new interfazeEkitaldia();
             ie.Show();
-            this.Close(); 
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            interfazeKontrolMedikoa ikm = new interfazeKontrolMedikoa();
+            ikm.Show();
+            this.Close();
         }
     }
 }

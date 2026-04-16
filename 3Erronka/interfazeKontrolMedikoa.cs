@@ -17,7 +17,7 @@ namespace _3Erronka
 
         private void interfazeAnimaliak_Load(object sender, EventArgs e)
         {
-            Kontrola.anfibioakErakutsi(dataGridView1);
+            Kontrola.kontrolMedikoakErakutsi(dataGridView1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -33,11 +33,11 @@ namespace _3Erronka
             {
                 int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
 
-                Kontrola.ezabatuAnfibioa(id);
+                Kontrola.ezabatuKontrolMedikoa(id);
 
-                MessageBox.Show("Anfibioa ezabatuta!");
+                MessageBox.Show("Kontrol medikoa ezabatuta!");
 
-                Kontrola.anfibioakErakutsi(dataGridView1);
+                Kontrola.kontrolMedikoakErakutsi(dataGridView1);
             }
             else
             {
@@ -55,10 +55,17 @@ namespace _3Erronka
             string balioBerria = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
 
 
-            Kontrola.editatuAnfibioa(id, zutabea, balioBerria);
-            Kontrola.anfibioakErakutsi(dataGridView1);
+            Kontrola.editatuKontrolMedikoa(id, zutabea, balioBerria);
+            Kontrola.kontrolMedikoakErakutsi(dataGridView1);
 
             MessageBox.Show("Datua zuzen editatu da");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            kontrolMedikoaGehitu kmg = new kontrolMedikoaGehitu();
+            kmg.Show();
+            this.Close();
         }
     }
 }

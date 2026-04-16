@@ -55,6 +55,9 @@
     <Compile Update="interfazeUgaztuna.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="kontrolMedikoaGehitu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="langileaGehitu.cs">
       <SubType>Form</SubType>
     </Compile>

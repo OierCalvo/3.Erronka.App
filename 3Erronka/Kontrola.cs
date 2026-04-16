@@ -3,14 +3,14 @@ using MySql.Data.MySqlClient;
 
 public class Kontrola
 {
-    public static Langilea login(TextBox tx1, TextBox tx2)
+    public static Langilea login()
     {
         Langilea l = new Langilea();
         List<Langilea> langileZerrenda = l.GetLangileak();
 
         foreach (Langilea ln in langileZerrenda)
         {
-            if (ln.getPostaElektronikoa().Equals(tx1.Text) && ln.getPasahitza().Equals( tx2.Text))
+            if (ln.getPostaElektronikoa().Equals(interfazeLogin.textBox1.Text) && ln.getPasahitza().Equals(interfazeLogin.textBox2.Text))
             {
                 return ln;
             }
@@ -401,17 +401,18 @@ public class Kontrola
         }
     }
 
-    public static void gehituEkitaldia(TextBox tx1, TextBox tx2, TextBox tx3, TextBox tx4)
+    public static void gehituEkitaldia(TextBox tx1, TextBox tx2, TextBox tx3)
     {
         MySqlConnection con = Konexioa.konexioa();
         string sql = "INSERT INTO ekitaldiak (ekitaldi_izena, data, deskribapena, id_langilea) VALUES (@izena, @data, @deskribapena, @id)";
 
         using (MySqlCommand cmd = new MySqlCommand(sql, con))
         {
+            Langilea l = login();
             cmd.Parameters.AddWithValue("@izena", tx1.Text);
             cmd.Parameters.AddWithValue("@data", tx2.Text);
             cmd.Parameters.AddWithValue("@deskribapena", tx3.Text);
-            cmd.Parameters.AddWithValue("@id", tx4.Text);
+            cmd.Parameters.AddWithValue("@id", l.getId());
 
             con.Open();
             int filas = cmd.ExecuteNonQuery();
@@ -838,6 +839,107 @@ public class Kontrola
                 b.getAnimalia(),
                 b.getAzalMota(),
                 b.getMetamorfosia()
+            );
+        }
+    }
+
+    public static void gehituKontrolMedikoa(TextBox tx1, TextBox tx3, TextBox tx4, TextBox tx5, TextBox tx6, TextBox tx7)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO kontrol_medikoak (id_animalia, id_langilea, data, diagnostikoa, tratamendua, oharra, sendatzeko_epea) VALUES (@id_animali, @id_langile, @data, @diagnostikoa, @tratamendua, @oharra, @sendatzeko_epea)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            Langilea l = login();
+            cmd.Parameters.AddWithValue("@id_animali", tx1.Text);
+            cmd.Parameters.AddWithValue("@id_langile", l.getId());
+            cmd.Parameters.AddWithValue("@data", tx3.Text);
+            cmd.Parameters.AddWithValue("@diagnostikoa", tx4.Text);
+            cmd.Parameters.AddWithValue("@tratamendua", tx5.Text);
+            cmd.Parameters.AddWithValue("@oharra", tx6.Text);
+            cmd.Parameters.AddWithValue("@sendatzeko_epea", tx7.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Kontrol medikoa gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuKontrolMedikoa(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM kontrol_medikoak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuKontrolMedikoa(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+
+        string sql = $"UPDATE kontrol_medikoak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void kontrolMedikoakErakutsi(DataGridView dgv)
+    {
+        KontrolMedikoa a = new KontrolMedikoa();
+        var zerrenda = a.GetKontrolMedikoak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_animalia", "Id animalia");
+        dgv.Columns.Add("id_langilea", "Id langilea");
+        dgv.Columns.Add("data", "Data");
+        dgv.Columns.Add("diagnostikoa", "Diagnostikoa");
+        dgv.Columns.Add("tratamendua", "Tratamendua");
+        dgv.Columns.Add("oharra", "Oharra");
+        dgv.Columns.Add("sendatzeko_epea", "Sendatzeko epea");
+
+
+
+        foreach (KontrolMedikoa b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getAnimalia(),
+                b.getLangilea(),
+                b.getData(),
+                b.getDiagnostikoa(),
+                b.getTratamendua(),
+                b.getOharra(),
+                b.getSendatzekoEpea()
             );
         }
     }
