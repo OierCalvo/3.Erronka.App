@@ -943,4 +943,96 @@ public class Kontrola
             );
         }
     }
+
+    public static void gehituErreserba(TextBox tx1,TextBox tx2, TextBox tx3, TextBox tx4)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+        string sql = "INSERT INTO erreserbak (id_bezeroa, id_ekitaldia, data, plaza_kopurua) VALUES (@id_bezero, @id_ekitaldi, @data, @plazak)";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            Langilea l = login();
+            cmd.Parameters.AddWithValue("@id_bezero", tx1.Text);
+            cmd.Parameters.AddWithValue("@id_ekitaldi", tx2.Text);
+            cmd.Parameters.AddWithValue("@data", tx3.Text);
+            cmd.Parameters.AddWithValue("@plazak", tx4.Text);
+
+            con.Open();
+            int filas = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (filas > 0)
+                MessageBox.Show("Erreserba gehitu da");
+            else
+                MessageBox.Show("Ezin izan da gehitu");
+        }
+
+    }
+
+    public static void ezabatuErreserba(int id)
+    {
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+            string sql = "DELETE FROM erreserbak WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Errorea ezabatzean: " + e.Message);
+        }
+    }
+
+    public static void editatuErreserba(int id, string zutabea, string balioa)
+    {
+        MySqlConnection con = Konexioa.konexioa();
+
+        string sql = $"UPDATE erreserbak SET {zutabea} = @valor WHERE id = @id";
+
+        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+        {
+            cmd.Parameters.AddWithValue("@valor", balioa);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
+    public static void erreserbakErakutsi(DataGridView dgv)
+    {
+        Erreserba a = new Erreserba();
+        var zerrenda = a.GetErreserbak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("id_bezeroa", "Id bezeroa");
+        dgv.Columns.Add("id_ekitaldia", "Id ekitaldia");
+        dgv.Columns.Add("data", "Data");
+        dgv.Columns.Add("plaza_kopurua", "Plaza kopurua");
+
+
+
+        foreach (Erreserba b in zerrenda)
+        {
+            dgv.Rows.Add(
+                b.getId(),
+                b.getBezeroa(),
+                b.getEkitaldia(),
+                b.getData(),
+                b.getPlazaKopurua()
+            );
+        }
+    }
 }

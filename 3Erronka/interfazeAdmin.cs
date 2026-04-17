@@ -10,10 +10,67 @@ namespace _3Erronka
 {
     public partial class interfazeAdmin : Form
     {
+        
         public interfazeAdmin()
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Langilea l = Kontrola.login();
+            if (l.getRola().Equals("admina"))
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                button6.Visible = true;
+                button7.Visible = true;
+            }
+            else if(l.getRola().Equals("zaintzaile_arrunta"))
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                button6.Visible = true;
+                button7.Visible = false;
+            }
+            else if (l.getRola().Equals("zaintzailea_nagusia"))
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                button6.Visible = true;
+                button7.Visible = false;
+            }
+            else if (l.getRola().Equals("kordinatzailea"))
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                button6.Visible = true;
+                button7.Visible = false;
+            }
+            else if (l.getRola().Equals("albaitaria"))
+            {
+                button1.Visible = true;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                button6.Visible = true;
+                button7.Visible = false;
+            }
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -54,6 +111,13 @@ namespace _3Erronka
         {
             interfazeKontrolMedikoa ikm = new interfazeKontrolMedikoa();
             ikm.Show();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            interfazeErreserba ie = new interfazeErreserba();
+            ie.Show();
             this.Close();
         }
     }

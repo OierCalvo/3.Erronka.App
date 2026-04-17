@@ -24,7 +24,7 @@ namespace _3Erronka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Kontrola.gehituEkitaldia(textBox1, textBox2, textBox3, textBox4);
+            Kontrola.gehituEkitaldia(textBox1, textBox2, textBox3);
         }
     }
 }

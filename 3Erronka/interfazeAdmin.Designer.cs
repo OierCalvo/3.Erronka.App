@@ -55,6 +55,7 @@
             button2.TabIndex = 1;
             button2.Text = "Erreserbak";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -120,6 +121,7 @@
             Controls.Add(button1);
             Name = "interfazeAdmin";
             Text = "Form2";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 

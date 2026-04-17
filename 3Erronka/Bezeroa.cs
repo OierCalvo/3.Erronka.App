@@ -68,6 +68,11 @@ public class Bezeroa
         return nan;
     }
 
+    public override string ToString()
+    {
+        return id.ToString(); 
+    }
+
     public List<Bezeroa> GetBezeroak()
     {
         List<Bezeroa> bezeroZerrenda = new List<Bezeroa>();

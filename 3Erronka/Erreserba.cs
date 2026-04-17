@@ -19,6 +19,11 @@ public class Erreserba
         this.plaza_kopurua = plaza_kopurua;
     }
 
+    public Erreserba() 
+    { 
+    
+    }
+
     public int getId() 
     { 
         return id; 

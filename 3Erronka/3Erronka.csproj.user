@@ -13,6 +13,9 @@
     <Compile Update="ekitaldiaGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="erreserbaGehitu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="habitatGehitu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -29,6 +32,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="interfazeEkitaldia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="interfazeErreserba.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="interfazeHabitat.cs">
