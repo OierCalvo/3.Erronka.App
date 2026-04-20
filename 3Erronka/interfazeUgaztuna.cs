@@ -82,7 +82,6 @@ namespace _3Erronka
 
             Kontrola.editatuUgaztunak(id, zutabea, balioBerria);
             Kontrola.ugaztunakErakutsi(dataGridView1);
-
             MessageBox.Show("Datua zuzen editatu da");
         }
 

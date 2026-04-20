@@ -18,6 +18,39 @@ namespace _3Erronka
         private void interfazeAnimaliak_Load(object sender, EventArgs e)
         {
             Kontrola.langileakErakutsi(dataGridView1);
+
+
+            Langilea l = Kontrola.login();
+            if (l.getRola().Equals("admina"))
+            {
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+            }
+            else if (l.getRola().Equals("zaintzaile_arrunta"))
+            {
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+            }
+            else if (l.getRola().Equals("zaintzailea_nagusia"))
+            {
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+            }
+            else if (l.getRola().Equals("kordinatzailea"))
+            {
+                button2.Visible = true;
+                button3.Visible = false;
+                button4.Visible = true;
+            }
+            else if (l.getRola().Equals("albaitaria"))
+            {
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

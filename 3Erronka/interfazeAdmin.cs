@@ -32,9 +32,9 @@ namespace _3Erronka
             else if(l.getRola().Equals("zaintzaile_arrunta"))
             {
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
@@ -42,9 +42,9 @@ namespace _3Erronka
             else if (l.getRola().Equals("zaintzailea_nagusia"))
             {
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
@@ -57,14 +57,14 @@ namespace _3Erronka
                 button4.Visible = true;
                 button5.Visible = true;
                 button6.Visible = true;
-                button7.Visible = false;
+                button7.Visible = true;
             }
             else if (l.getRola().Equals("albaitaria"))
             {
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
