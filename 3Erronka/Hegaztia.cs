@@ -50,7 +50,7 @@ public class Hegaztia : Animalia
         {
             MySqlConnection con = Konexioa.konexioa();
 
-            string sql = "SELECT an.id as animali_id, an.id_habitata as id_habitat, an.izena, an.espeziea, an.sexua, an.jaiotza_data, an.deskribapena, h.id as hegazti_id, h.id_animaliak as id_animali, h.hegal_zabalera, h.hegalduna FROM animaliak an INNER JOIN hegaztiak h ON an.id = h.id_animaliak";
+            string sql = "SELECT * FROM hegaztiakTablatikKonstruktorera";
             MySqlCommand cmd = new MySqlCommand(sql, con);
             con.Open();
 
