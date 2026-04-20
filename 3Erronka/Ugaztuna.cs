@@ -49,7 +49,7 @@ public class Ugaztuna : Animalia
         {
             MySqlConnection con = Konexioa.konexioa();
 
-            string sql = "SELECT * FROM ugaztunakTablatikKonstruktorera";
+            string sql = "SELECT an.id as animali_id, an.id_habitata as id_habitat, an.izena, an.espeziea, an.sexua, an.jaiotza_data, an.deskribapena, u.id as ugaztun_id, u.id_animalia as id_animali, u.ile_mota, u.ugalketa_mota FROM animaliak an INNER JOIN ugaztunak u ON an.id = u.id_animalia";
             MySqlCommand cmd = new MySqlCommand(sql, con);
             con.Open();
 
