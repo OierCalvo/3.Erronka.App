@@ -571,7 +571,7 @@ public class Kontrola
         foreach (Ugaztuna b in zerrenda)
         {
             dgv.Rows.Add(
-                b.getIdUgaztun(),
+                b.getId(),
                 b.getAnimalia(),
                 b.getIleMota(),
                 b.getUgalketaMota()
