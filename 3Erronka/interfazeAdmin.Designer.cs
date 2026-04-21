@@ -41,6 +41,7 @@
             label4 = new Label();
             label5 = new Label();
             button8 = new Button();
+            button9 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -65,9 +66,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(540, 261);
+            button3.Location = new Point(416, 261);
             button3.Name = "button3";
-            button3.Size = new Size(248, 137);
+            button3.Size = new Size(173, 137);
             button3.TabIndex = 2;
             button3.Text = "Ekitaldiak";
             button3.UseVisualStyleBackColor = true;
@@ -97,7 +98,7 @@
             // 
             button6.Location = new Point(12, 261);
             button6.Name = "button6";
-            button6.Size = new Size(248, 137);
+            button6.Size = new Size(173, 137);
             button6.TabIndex = 5;
             button6.Text = "Kontrol medikoak";
             button6.UseVisualStyleBackColor = true;
@@ -105,9 +106,9 @@
             // 
             // button7
             // 
-            button7.Location = new Point(277, 261);
+            button7.Location = new Point(205, 261);
             button7.Name = "button7";
-            button7.Size = new Size(248, 137);
+            button7.Size = new Size(173, 137);
             button7.TabIndex = 6;
             button7.Text = "Langileak";
             button7.UseVisualStyleBackColor = true;
@@ -173,11 +174,22 @@
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
+            // button9
+            // 
+            button9.Location = new Point(615, 261);
+            button9.Name = "button9";
+            button9.Size = new Size(173, 137);
+            button9.TabIndex = 13;
+            button9.Text = "Sarrerak";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // interfazeAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -213,5 +225,6 @@
         private Label label4;
         private Label label5;
         private Button button8;
+        private Button button9;
     }
 }
