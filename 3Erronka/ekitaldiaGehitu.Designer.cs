@@ -93,9 +93,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(49, 76);
             label2.Name = "label2";
-            label2.Size = new Size(44, 20);
+            label2.Size = new Size(53, 20);
             label2.TabIndex = 29;
-            label2.Text = "Data:";
+            label2.Text = "Ordua:";
             // 
             // label1
             // 

@@ -1,6 +1,6 @@
 ﻿namespace _3Erronka
 {
-    partial class interfazeLangilea
+    partial class interfazeSarrera
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            button1 = new Button();
             dataGridView1 = new DataGridView();
             button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1222, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 13;
+            button1.Text = "Atzera";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
@@ -43,72 +51,36 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(803, 426);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.TabIndex = 12;
             // 
             // button4
             // 
-            button4.Location = new Point(942, 129);
+            button4.Location = new Point(961, 126);
             button4.Name = "button4";
             button4.Size = new Size(274, 72);
-            button4.TabIndex = 11;
-            button4.Text = "Aldatu";
+            button4.TabIndex = 14;
+            button4.Text = "Sarrera sortu";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button4.Click += button4_Click_1;
             // 
-            // button3
-            // 
-            button3.Location = new Point(942, 285);
-            button3.Name = "button3";
-            button3.Size = new Size(274, 72);
-            button3.TabIndex = 10;
-            button3.Text = "Langile bat ezabatu";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(942, 207);
-            button2.Name = "button2";
-            button2.Size = new Size(274, 72);
-            button2.TabIndex = 9;
-            button2.Text = "Langile bat gehitu";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1222, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 8;
-            button1.Text = "Atzera";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // interfazeLangilea
+            // interfazeSarrera
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1328, 528);
             Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "interfazeLangilea";
-            Text = "interfazeLangilea";
+            Name = "interfazeSarrera";
+            Text = "interfazeSarrera";
             Load += interfazeAnimaliak_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
+        private Button button1;
         public DataGridView dataGridView1;
         private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
     }
 }

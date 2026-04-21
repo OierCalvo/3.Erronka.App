@@ -1,20 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Cms;
 using System;
 
 public class Ekitaldia
 {
 	private int id;
 	private string ekitaldi_izena;
-    private DateTime data;
+    private TimeSpan ordua;
 	private string deskribapena;
 	private Langilea langilea;
 
 
-	public Ekitaldia(int id,string ekitaldi_izena,DateTime data,string deskribapena,Langilea langilea)
+	public Ekitaldia(int id,string ekitaldi_izena,TimeSpan ordua,string deskribapena,Langilea langilea)
 	{
 		this.id = id;
 		this.ekitaldi_izena = ekitaldi_izena;
-		this.data = data;
+		this.ordua = ordua;
 		this.deskribapena = deskribapena;
 		this.langilea = langilea;
 	}
@@ -39,9 +40,9 @@ public class Ekitaldia
 		return ekitaldi_izena;
 	}
 
-	public DateTime getData()
+	public TimeSpan getOrdua()
 	{
-		return data;
+		return ordua;
 	}
 
 	public string getDeskribapena()
@@ -53,6 +54,11 @@ public class Ekitaldia
 	{
 		return langilea;
 	}
+
+    public override string ToString()
+    {
+        return id.ToString();
+    }
 
     public List<Ekitaldia> GetEkitaldiak()
     {
@@ -75,7 +81,7 @@ public class Ekitaldia
                 Ekitaldia b = new Ekitaldia(
                     rs.GetInt32("id"),
                     rs.GetString("ekitaldi_izena"),
-                    rs.GetDateTime("data"),
+                    rs.GetTimeSpan("ordua"),
                     rs.GetString("deskribapena"),
                     l
                 );

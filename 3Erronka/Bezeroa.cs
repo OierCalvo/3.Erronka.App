@@ -9,10 +9,10 @@ public class Bezeroa
     private string telefonoa;
     private string posta_elektronikoa;
     private string pasahitza;
-    private string nan;
+    private int adina;
 
 
-    public Bezeroa(int id,string izena,string abizena,string telefonoa,string posta_elektronikoa,string pasahitza,string nan)
+    public Bezeroa(int id,string izena,string abizena,string telefonoa,string posta_elektronikoa,string pasahitza,int adina)
     {
         this.id = id;
         this.izena = izena;
@@ -20,7 +20,7 @@ public class Bezeroa
         this.telefonoa = telefonoa;
         this.posta_elektronikoa = posta_elektronikoa;
         this.pasahitza = pasahitza;
-        this.nan = nan;
+        this.adina = adina;
     }
 
     public Bezeroa(int id)
@@ -63,9 +63,9 @@ public class Bezeroa
         return pasahitza;
     }
 
-    public string getNan()
+    public int getAdina()
     {
-        return nan;
+        return adina;
     }
 
     public override string ToString()
@@ -97,7 +97,7 @@ public class Bezeroa
                     rs.GetString("telefonoa"),
                     rs.GetString("posta_elektronikoa"),
                     rs.GetString("pasahitza"),
-                    rs.GetString("nan")
+                    rs.GetInt32("adina")
                 );
 
                 bezeroZerrenda.Add(b);

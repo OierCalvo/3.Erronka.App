@@ -94,9 +94,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(49, 263);
             label6.Name = "label6";
-            label6.Size = new Size(39, 20);
+            label6.Size = new Size(51, 20);
             label6.TabIndex = 5;
-            label6.Text = "Nan:";
+            label6.Text = "Adina:";
             // 
             // textBox1
             // 

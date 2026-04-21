@@ -8,20 +8,27 @@ public class Erreserba
     private Ekitaldia ekitaldia;
     private DateTime data;
     private int plaza_kopurua;
+    private decimal prezioa;
 
 
-    public Erreserba(int id,Bezeroa bezeroa,Ekitaldia ekitaldia,DateTime data,int plaza_kopurua)
+    public Erreserba(int id,Bezeroa bezeroa,Ekitaldia ekitaldia,DateTime data,int plaza_kopurua, decimal prezioa) 
     {
         this.id = id;
         this.bezeroa = bezeroa;
         this.ekitaldia = ekitaldia;
         this.data = data;
         this.plaza_kopurua = plaza_kopurua;
+        this.prezioa = prezioa;
     }
 
-    public Erreserba() 
+    public Erreserba(int id) 
     { 
-    
+        this.id= id;
+    }
+
+    public Erreserba()
+    {
+
     }
 
     public int getId() 
@@ -49,6 +56,16 @@ public class Erreserba
         return plaza_kopurua;
     }
 
+    public decimal getPrezioa()
+    {
+        return prezioa;
+    }
+
+    public override string ToString()
+    {
+        return id.ToString();
+    }
+
     public List<Erreserba> GetErreserbak()
     {
         List<Erreserba> erreserbaZerrenda = new List<Erreserba>();
@@ -73,7 +90,8 @@ public class Erreserba
                     b,
                     e,
                     rs.GetDateTime("data"),
-                    rs.GetInt32("plaza_kopurua")
+                    rs.GetInt32("plaza_kopurua"),
+                    rs.GetDecimal("prezioa")
                     
                 );
 

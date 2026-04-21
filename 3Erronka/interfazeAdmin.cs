@@ -10,7 +10,7 @@ namespace _3Erronka
 {
     public partial class interfazeAdmin : Form
     {
-        
+
         public interfazeAdmin()
         {
             InitializeComponent();
@@ -21,6 +21,11 @@ namespace _3Erronka
             Langilea l = Kontrola.login();
             if (l.getRola().Equals("admina"))
             {
+                label1.Visible = true;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                label5.Visible = false;
                 button1.Visible = true;
                 button2.Visible = true;
                 button3.Visible = true;
@@ -29,42 +34,62 @@ namespace _3Erronka
                 button6.Visible = true;
                 button7.Visible = true;
             }
-            else if(l.getRola().Equals("zaintzaile_arrunta"))
+            else if (l.getRola().Equals("zaintzaile_arrunta"))
             {
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = true;
+                label5.Visible = false;
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
             }
             else if (l.getRola().Equals("zaintzailea_nagusia"))
             {
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = true;
+                label5.Visible = true;
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
             }
             else if (l.getRola().Equals("kordinatzailea"))
             {
+                label1.Visible = false;
+                label2.Visible = true;
+                label3.Visible = false;
+                label4.Visible = false;
+                label5.Visible = false;
                 button1.Visible = true;
                 button2.Visible = true;
                 button3.Visible = true;
                 button4.Visible = true;
                 button5.Visible = true;
                 button6.Visible = true;
-                button7.Visible = false;
+                button7.Visible = true;
             }
             else if (l.getRola().Equals("albaitaria"))
             {
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = true;
+                label4.Visible = false;
+                label5.Visible = false;
                 button1.Visible = true;
-                button2.Visible = true;
+                button2.Visible = false;
                 button3.Visible = true;
-                button4.Visible = true;
+                button4.Visible = false;
                 button5.Visible = true;
                 button6.Visible = true;
                 button7.Visible = false;
@@ -118,6 +143,20 @@ namespace _3Erronka
         {
             interfazeErreserba ie = new interfazeErreserba();
             ie.Show();
+            this.Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            interfazeLogin il = new interfazeLogin();
+            il.Show();
+            this.Close();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            interfazeSarrera ib = new interfazeSarrera();
+            ib.Show();
             this.Close();
         }
     }
