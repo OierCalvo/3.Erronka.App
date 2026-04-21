@@ -1095,6 +1095,8 @@ public class Kontrola
         Document doc = new Document(pdf);
 
         doc.Add(new Paragraph("SARRERA / TICKET").SetFontSize(18));
+
+        doc.Add(new Paragraph("ID: " + id));
         doc.Add(new Paragraph("Data: " + data));
         doc.Add(new Paragraph("Plaza kopurua: " + plaza));
         doc.Add(new Paragraph("Ekitaldia: " + e.getEkitaldiIzena()));
