@@ -18,7 +18,6 @@ namespace _3Erronka
         private void interfazeAnimaliak_Load(object sender, EventArgs e)
         {
             Kontrola.sarrerakErakutsi(dataGridView1);
-            Kontrola.narrastiakErakutsi(dataGridView1);
 
             Langilea l = Kontrola.login();
             if (l.getRola().Equals("admina"))
