@@ -1,5 +1,8 @@
 ﻿using _3Erronka;
 using MySql.Data.MySqlClient;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 
 public class Kontrola
 {
@@ -36,7 +39,7 @@ public class Kontrola
         dgv.Columns.Add("telefonoa", "Telefonoa");
         dgv.Columns.Add("posta_elektronikoa", "Posta Elektronikoa");
         dgv.Columns.Add("pasahitza", "Pasahitza");
-        dgv.Columns.Add("nan", "NAN");
+        dgv.Columns.Add("adina", "Adina");
 
         
         foreach (Bezeroa b in zerrenda)
@@ -48,7 +51,7 @@ public class Kontrola
                 b.getTelefonoa(),
                 b.getPostaElektronikoa(),
                 b.getPasahitza(),
-                b.getNan()
+                b.getAdina()
             );
         }
     }
@@ -56,7 +59,7 @@ public class Kontrola
     public static void gehituBezeroa(TextBox tx1, TextBox tx2,TextBox tx3, TextBox tx4, TextBox tx5, TextBox tx6)
     {
         MySqlConnection con = Konexioa.konexioa();
-        string sql = "INSERT INTO bezeroak (izena, abizena, telefonoa, posta_elektronikoa, pasahitza, nan) VALUES (@izena, @abizena, @telefonoa, @postaElektronikoa, @pasahitza, @nan)";
+        string sql = "INSERT INTO bezeroak (izena, abizena, telefonoa, posta_elektronikoa, pasahitza, adina) VALUES (@izena, @abizena, @telefonoa, @postaElektronikoa, @pasahitza, @adina)";
 
         using (MySqlCommand cmd = new MySqlCommand(sql, con))
         {
@@ -65,7 +68,7 @@ public class Kontrola
             cmd.Parameters.AddWithValue("@telefonoa", tx3.Text);
             cmd.Parameters.AddWithValue("@postaElektronikoa", tx4.Text);
             cmd.Parameters.AddWithValue("@pasahitza", tx5.Text);
-            cmd.Parameters.AddWithValue("@nan", tx6.Text);
+            cmd.Parameters.AddWithValue("@adina", tx6.Text);
 
             con.Open();
             int filas = cmd.ExecuteNonQuery();
@@ -102,7 +105,7 @@ public class Kontrola
     public static void editatuBezeroa(int id, string zutabea, string balioa)
     {
         MySqlConnection con = Konexioa.konexioa();
-        string sql = $"UPDATE bezeroak SET {zutabea} = @valor WHERE id = @id";
+        string sql = $"UP bezeroak SET {zutabea} = @valor WHERE id = @id";
 
         using (MySqlCommand cmd = new MySqlCommand(sql, con))
         {
@@ -404,13 +407,13 @@ public class Kontrola
     public static void gehituEkitaldia(TextBox tx1, TextBox tx2, TextBox tx3)
     {
         MySqlConnection con = Konexioa.konexioa();
-        string sql = "INSERT INTO ekitaldiak (ekitaldi_izena, data, deskribapena, id_langilea) VALUES (@izena, @data, @deskribapena, @id)";
+        string sql = "INSERT INTO ekitaldiak (ekitaldi_izena, ordua, deskribapena, id_langilea) VALUES (@izena, @ordua, @deskribapena, @id)";
 
         using (MySqlCommand cmd = new MySqlCommand(sql, con))
         {
             Langilea l = login();
             cmd.Parameters.AddWithValue("@izena", tx1.Text);
-            cmd.Parameters.AddWithValue("@data", tx2.Text);
+            cmd.Parameters.AddWithValue("@ordua", tx2.Text);
             cmd.Parameters.AddWithValue("@deskribapena", tx3.Text);
             cmd.Parameters.AddWithValue("@id", l.getId());
 
@@ -474,7 +477,7 @@ public class Kontrola
 
         dgv.Columns.Add("id", "ID");
         dgv.Columns.Add("ekitaldi_izena", "Izena");
-        dgv.Columns.Add("data", "Data");
+        dgv.Columns.Add("ordua", "Ordua");
         dgv.Columns.Add("deskribapena", "Deskribapena");
         dgv.Columns.Add("id_langilea", "Id_langilea");
 
@@ -485,7 +488,7 @@ public class Kontrola
             dgv.Rows.Add(
                 b.getId(),
                 b.getEkitaldiIzena(),
-                b.getData(),
+                b.getOrdua(),
                 b.getDeskribapena(),
                 b.getLangilea()
             );
@@ -944,10 +947,10 @@ public class Kontrola
         }
     }
 
-    public static void gehituErreserba(TextBox tx1,TextBox tx2, TextBox tx3, TextBox tx4)
+    public static void gehituErreserba(TextBox tx1,TextBox tx2, TextBox tx3, TextBox tx4, TextBox tx5)
     {
         MySqlConnection con = Konexioa.konexioa();
-        string sql = "INSERT INTO erreserbak (id_bezeroa, id_ekitaldia, data, plaza_kopurua) VALUES (@id_bezero, @id_ekitaldi, @data, @plazak)";
+        string sql = "INSERT INTO erreserbak (id_bezeroa, id_ekitaldia, data, plaza_kopurua, prezioa) VALUES (@id_bezero, @id_ekitaldi, @data, @plazak, @prezioa)";
 
         using (MySqlCommand cmd = new MySqlCommand(sql, con))
         {
@@ -956,6 +959,7 @@ public class Kontrola
             cmd.Parameters.AddWithValue("@id_ekitaldi", tx2.Text);
             cmd.Parameters.AddWithValue("@data", tx3.Text);
             cmd.Parameters.AddWithValue("@plazak", tx4.Text);
+            cmd.Parameters.AddWithValue("@prezioa", tx5.Text);
 
             con.Open();
             int filas = cmd.ExecuteNonQuery();
@@ -1021,6 +1025,7 @@ public class Kontrola
         dgv.Columns.Add("id_ekitaldia", "Id ekitaldia");
         dgv.Columns.Add("data", "Data");
         dgv.Columns.Add("plaza_kopurua", "Plaza kopurua");
+        dgv.Columns.Add("prezioa", "Prezioa");
 
 
 
@@ -1031,8 +1036,167 @@ public class Kontrola
                 b.getBezeroa(),
                 b.getEkitaldia(),
                 b.getData(),
-                b.getPlazaKopurua()
+                b.getPlazaKopurua(),
+                b.getPrezioa()
             );
         }
+    }
+
+    public static void sarrerakErakutsi(DataGridView dgv)
+    {
+        Sarrera a = new Sarrera();
+        var zerrenda = a.GetSarrerak();
+
+
+        dgv.Columns.Clear();
+        dgv.Rows.Clear();
+
+
+        dgv.Columns.Add("id", "ID");
+        dgv.Columns.Add("idErreserba", "Id erreserba");
+        dgv.Columns.Add("data", "Data");
+        dgv.Columns.Add("plaza_kopurua", "Plaza kopurua");
+        dgv.Columns.Add("id_ekitaldia", "Id ekitaldia");
+        dgv.Columns.Add("id_bezeroa", "Id bezeroa");
+        dgv.Columns.Add("prezioa", "prezioa");
+
+
+
+
+        foreach (Sarrera b in zerrenda)
+        {
+            
+            dgv.Rows.Add(
+                b.getId(),
+                b.getErreserba(),
+                b.getData(),
+                b.getPlaza(),
+                b.GetEkitaldia().getId(),
+                b.GetBezeroa().getId(),
+                b.getPrezioa()
+
+            );
+        }
+    }
+
+    public static void GenerarPDF(int id, string data, string plaza, Ekitaldia e, Bezeroa b, string prezioa)
+    {
+        string folder = @"C:\Users\irait\source\repos\3Erronka\3Erronka\pdf";
+
+        if (!Directory.Exists(folder))
+        {
+            Directory.CreateDirectory(folder);
+        }
+
+        string path = Path.Combine(folder, $"sarrera_{id}.pdf");
+
+        PdfWriter writer = new PdfWriter(path);
+        PdfDocument pdf = new PdfDocument(writer);
+        Document doc = new Document(pdf);
+
+        doc.Add(new Paragraph("SARRERA / TICKET").SetFontSize(18));
+        doc.Add(new Paragraph("ID: " + id));
+        doc.Add(new Paragraph("Data: " + data));
+        doc.Add(new Paragraph("Plaza kopurua: " + plaza));
+        doc.Add(new Paragraph("Ekitaldia: " + e.getEkitaldiIzena()));
+        doc.Add(new Paragraph("Bezeroa: " + b.getIzena() + " " + b.getAbizena()));
+        doc.Add(new Paragraph("Prezioa: " + prezioa + " €"));
+
+        doc.Close();
+
+        MessageBox.Show("PDF creado: " + path);
+    }
+
+    public static string GetIzenaFromDb(int id)
+    {
+        string izena = "";
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT izena FROM bezeroak WHERE id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                izena = result.ToString();
+            }
+
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error cargando bezeroa: " + ex.Message);
+        }
+
+        return izena;
+    }
+
+    public static string GetAbizenaFromDb(int id)
+    {
+        string izena = "";
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT abizena FROM bezeroak WHERE id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                izena = result.ToString();
+            }
+
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error cargando bezeroa: " + ex.Message);
+        }
+
+        return izena;
+    }
+
+    public static string GetEkitaldiIzenaFromDb(int id)
+    {
+        string izena = "";
+
+        try
+        {
+            MySqlConnection con = Konexioa.konexioa();
+
+            string sql = "SELECT ekitaldi_izena FROM ekitaldiak WHERE id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            con.Open();
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                izena = result.ToString();
+            }
+
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error cargando bezeroa: " + ex.Message);
+        }
+
+        return izena;
     }
 }

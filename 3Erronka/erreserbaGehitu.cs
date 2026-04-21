@@ -17,7 +17,7 @@ namespace _3Erronka
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Kontrola.gehituErreserba(textBox1, textBox2, textBox3, textBox4);
+            Kontrola.gehituErreserba(textBox1, textBox2, textBox3, textBox4, textBox5);
         }
 
         private void button2_Click(object sender, EventArgs e)

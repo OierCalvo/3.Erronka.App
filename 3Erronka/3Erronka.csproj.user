@@ -58,6 +58,9 @@
     <Compile Update="interfazeNarrastia.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="interfazeSarrera.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="interfazeUgaztuna.cs">
       <SubType>Form</SubType>
     </Compile>

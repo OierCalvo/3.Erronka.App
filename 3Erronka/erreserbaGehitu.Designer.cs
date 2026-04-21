@@ -38,6 +38,8 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            label5 = new Label();
+            textBox5 = new TextBox();
             SuspendLayout();
             // 
             // button2
@@ -52,7 +54,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(31, 264);
+            button1.Location = new Point(31, 315);
             button1.Name = "button1";
             button1.Size = new Size(330, 29);
             button1.TabIndex = 49;
@@ -124,11 +126,29 @@
             label1.TabIndex = 37;
             label1.Text = "id bezeroa:";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(31, 266);
+            label5.Name = "label5";
+            label5.Size = new Size(61, 20);
+            label5.TabIndex = 51;
+            label5.Text = "Prezioa:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(207, 263);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(154, 27);
+            textBox5.TabIndex = 52;
+            // 
             // erreserbaGehitu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox5);
+            Controls.Add(label5);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox4);
@@ -157,5 +177,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Label label5;
+        private TextBox textBox5;
     }
 }

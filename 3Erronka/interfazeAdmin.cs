@@ -152,5 +152,12 @@ namespace _3Erronka
             il.Show();
             this.Close();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            interfazeSarrera ib = new interfazeSarrera();
+            ib.Show();
+            this.Close();
+        }
     }
 }
